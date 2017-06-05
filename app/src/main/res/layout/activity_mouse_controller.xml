@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mouseController"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context="com.codeforfun.himanshu.mousecontroller.MouseController">
+
+    <TextView
+        android:id="@+id/mouseTouchPad"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#111122"
+        android:layout_above="@+id/mouseButtonControls"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/mouseButtonControls"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/leftButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            style="?android:attr/buttonBarButtonStyle"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/edittext"
+            android:layout_marginRight="5dp"
+            android:layout_weight="0.5"
+            android:text="Left" />
+
+        <Button
+            android:id="@+id/rightButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            style="?android:attr/buttonBarButtonStyle"
+            android:background="@drawable/edittext"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="0.5"
+            android:text="Right" />
+
+    </LinearLayout>
+
+</RelativeLayout>

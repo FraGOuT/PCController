@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:orientation="vertical"
+    tools:context="com.codeforfun.himanshu.mousecontroller.AllFunctions">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/mouseController"
+            android:background="@drawable/edittext">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/touchpad_icon"
+                android:background="#3F51B5" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Mouse Controller"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_marginBottom="16dp"
+            android:id="@+id/vlcController"
+            android:background="@drawable/vlc_outline">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/vlc_icon"
+                android:background="#F67F00"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Vlc Controller"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:id="@+id/powerpointController"
+            android:background="@drawable/powerpoint_outline">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/powerpoint_icon"
+                android:background="#D04424"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Powerpoint Presenter"
+                android:gravity="center"
+                android:textAppearance="?android:attr/textAppearanceLarge"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
