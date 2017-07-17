@@ -1,7 +1,7 @@
 package com.codeforfun.himanshu.mousecontroller;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
 public class VlcController extends AppCompatActivity {
@@ -26,13 +26,13 @@ public class VlcController extends AppCompatActivity {
                 {
                     mPlay.setImageResource(R.drawable.vlc_pause_icon);
                     mPause =false;
-                    UdpConnectionHelper.sendCommand(AppConstants.VLC_PLAY);
+                    ConnectionHelper.sendCommand(AppConstants.VLC_PLAY);
                 }
                 else
                 {
                     mPlay.setImageResource(R.drawable.vlc_play_icon);
                     mPause =true;
-                    UdpConnectionHelper.sendCommand(AppConstants.VLC_PAUSE);
+                    ConnectionHelper.sendCommand(AppConstants.VLC_PAUSE);
                 }
             }
         });
@@ -50,49 +50,49 @@ public class VlcController extends AppCompatActivity {
                     mVolMute.setImageResource(R.drawable.vlc_volume_mute);
                     mMute =true;
                 }
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_MUTE);
+                ConnectionHelper.sendCommand(AppConstants.VLC_MUTE);
             }
         });
 
         findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_NEXT);
+                ConnectionHelper.sendCommand(AppConstants.VLC_NEXT);
             }
         });
 
         findViewById(R.id.previous).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_PREVIOUS);
+                ConnectionHelper.sendCommand(AppConstants.VLC_PREVIOUS);
             }
         });
 
         findViewById(R.id.fastForward).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_FAST_FORWARD);
+                ConnectionHelper.sendCommand(AppConstants.VLC_FAST_FORWARD);
             }
         });
 
         findViewById(R.id.fastBackward).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_FAST_BACKWARD);
+                ConnectionHelper.sendCommand(AppConstants.VLC_FAST_BACKWARD);
             }
         });
 
         findViewById(R.id.vlcVolInc).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_INCREASE_VOLUME);
+                ConnectionHelper.sendCommand(AppConstants.VLC_INCREASE_VOLUME);
             }
         });
 
         findViewById(R.id.vlcVolDec).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_DECREASE_VOLUME);
+                ConnectionHelper.sendCommand(AppConstants.VLC_DECREASE_VOLUME);
             }
         });
 
@@ -109,14 +109,14 @@ public class VlcController extends AppCompatActivity {
                     mFullScreen.setImageResource(R.drawable.vlc_fullscreen_exit);
                     mFullscreen = true;
                 }
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_FULLSCREEN);
+                ConnectionHelper.sendCommand(AppConstants.VLC_FULLSCREEN);
             }
         });
 
         findViewById(R.id.aspectRatio).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand(AppConstants.VLC_ASPECT_RATIO);
+                ConnectionHelper.sendCommand(AppConstants.VLC_ASPECT_RATIO);
             }
         });
     }

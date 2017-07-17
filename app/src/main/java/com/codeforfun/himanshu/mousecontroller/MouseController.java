@@ -1,7 +1,7 @@
 package com.codeforfun.himanshu.mousecontroller;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -33,7 +33,7 @@ public class MouseController extends AppCompatActivity {
         mousePad.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                if(UdpConnectionHelper.isConnected ){//&& out!=null){
+                if(ConnectionHelper.isConnected ){//&& out!=null){
                     switch (event.getAction()){
 
                         case MotionEvent.ACTION_DOWN:
@@ -49,14 +49,14 @@ public class MouseController extends AppCompatActivity {
                             initX = event.getX();
                             initY = event.getY();
                             if(disX != 0 || disY != 0){
-                                UdpConnectionHelper.sendCommand(disX+","+disY);
+                                ConnectionHelper.sendCommand(disX+","+disY);
                             }
                             mouseMoved = true;
                             break;
 
                         case MotionEvent.ACTION_UP:
                             if(!mouseMoved){
-                                UdpConnectionHelper.sendCommand(AppConstants.LEFT_MOUSE_BUTTON_PRESSED);
+                                ConnectionHelper.sendCommand(AppConstants.LEFT_MOUSE_BUTTON_PRESSED);
                             }
                     }
                 }
@@ -80,11 +80,11 @@ public class MouseController extends AppCompatActivity {
     }
 
     public void leftButtonPressed(){
-        UdpConnectionHelper.sendCommand(AppConstants.LEFT_MOUSE_BUTTON_PRESSED);
+        ConnectionHelper.sendCommand(AppConstants.LEFT_MOUSE_BUTTON_PRESSED);
     }
 
 
     public void rightButtonPressed(){
-        UdpConnectionHelper.sendCommand(AppConstants.RIGHT_MOUSE_BUTTON_PRESSED);
+        ConnectionHelper.sendCommand(AppConstants.RIGHT_MOUSE_BUTTON_PRESSED);
     }
 }

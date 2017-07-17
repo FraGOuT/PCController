@@ -1,7 +1,7 @@
 package com.codeforfun.himanshu.mousecontroller;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class PowerPointSlideShow extends AppCompatActivity {
@@ -15,14 +15,14 @@ public class PowerPointSlideShow extends AppCompatActivity {
         findViewById(R.id.previousSlide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand("pwr_prev_slide");
+                ConnectionHelper.sendCommand("pwr_prev_slide");
             }
         });
 
         findViewById(R.id.nextSlide).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UdpConnectionHelper.sendCommand("pwr_next_slide");
+                ConnectionHelper.sendCommand("pwr_next_slide");
             }
         });
     }

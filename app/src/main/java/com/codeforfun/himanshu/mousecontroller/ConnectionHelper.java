@@ -3,7 +3,7 @@ package com.codeforfun.himanshu.mousecontroller;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-public class UdpConnectionHelper {
+public class ConnectionHelper {
 
     public static String SERVER_ADDRESS = "192.168.0.140";
     public static final int SERVER_PORT = 8282;

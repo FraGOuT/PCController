@@ -2,10 +2,11 @@ package com.codeforfun.himanshu.mousecontroller;
 
 public class AppConstants {
 
+    //Mouse control commands.
     public static final String LEFT_MOUSE_BUTTON_PRESSED = "left_button_pressed";
     public static final String RIGHT_MOUSE_BUTTON_PRESSED = "right_button_pressed";
 
-    //Vlc control commands
+    //Vlc control commands.
     public static final String VLC_PLAY = "vlc_play";
     public static final String VLC_PAUSE = "vlc_pause";
     public static final String VLC_NEXT = "vlc_next";
