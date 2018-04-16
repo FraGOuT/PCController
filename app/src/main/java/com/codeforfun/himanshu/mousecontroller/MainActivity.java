@@ -1,10 +1,10 @@
 package com.codeforfun.himanshu.mousecontroller;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -22,7 +22,7 @@ import java.net.UnknownHostException;
 public class MainActivity extends AppCompatActivity {
 
     private Context mContext;
-
+    private ProgressDialog progressDialog;
     private static String OWN_IP_ADDRESS;
 
     @Override
@@ -54,12 +54,64 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                 }
-                new ConnectPhone().execute();
+                //new ConnectPhone().execute();
+
+                progressDialog = new ProgressDialog(mContext);
+                progressDialog.setMessage("Connecting");
+                progressDialog.show();
+                connect();
+
             }
         });
     }
 
-    public class ConnectPhone extends AsyncTask<String,Void,Boolean>{
+    public void connect(){
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try{
+                    Log.i("TAGG","Connection Starting ------Server="+ ConnectionHelper.SERVER_ADDRESS);
+                    ConnectionHelper.mSocket = new Socket(ConnectionHelper.SERVER_ADDRESS, ConnectionHelper.SERVER_PORT);
+                    ConnectionHelper.mSocket.setSoTimeout(3000);
+                    Log.i("TAGG","Connection Success");
+                    ConnectionHelper.isConnected = true;
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                    Log.i("TAGG","Error while connecting");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    Log.i("TAGG","Error connecting");
+                    ConnectionHelper.isConnected = false;
+                }
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(mContext, ConnectionHelper.isConnected?"Connected to Server!":"Error while connecting",Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
+                        try{
+                            if(ConnectionHelper.isConnected){
+                                ConnectionHelper.out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(ConnectionHelper.mSocket.getOutputStream())),true);
+                                Log.i("TAGG","Connection OUT Success");
+                                //Go to all function menu.
+                                Intent i = new Intent(mContext,AllFunctions.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                            Log.i("TAGG", "Error while creating OutWriter.", e);
+                            Toast.makeText(mContext, "Error while connecting out.", Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
+            }
+        }).start();
+    }
+
+
+   /* public class ConnectPhone extends AsyncTask<String,Void,Boolean>{
 
         @Override
         protected Boolean doInBackground(String... params) {
@@ -75,10 +127,11 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("TAGG","Error while connecting");
             } catch (IOException e) {
                 e.printStackTrace();
+                Log.i("TAGG","Error connecting");
                 result = false;
             }
 
-            Log.i("TAGG","Connection Result return -------");
+            Log.i("TAGG","Connection Result return -------"+result);
             return result;
         }
 
@@ -86,10 +139,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(Boolean result) {
 
             ConnectionHelper.isConnected = result;
-            Toast.makeText(mContext, ConnectionHelper.isConnected?"Connected to Server!":"Error while connecting",Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, result?"Connected to Server!":"Error while connecting",Toast.LENGTH_SHORT).show();
 
             try{
-                if(ConnectionHelper.isConnected){
+                if(result){
                     ConnectionHelper.out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(ConnectionHelper.mSocket.getOutputStream())),true);
                     Log.i("TAGG","Connection OUT Success");
 
@@ -104,5 +157,5 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(mContext,"Error while connecting out.",Toast.LENGTH_LONG).show();
             }
         }
-    }
+    }*/
 }

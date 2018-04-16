@@ -1,8 +1,8 @@
 package com.codeforfun.himanshu.mousecontroller;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 public class AllFunctions extends AppCompatActivity {
@@ -35,5 +35,12 @@ public class AllFunctions extends AppCompatActivity {
                 startActivity(i);
             }
         });
+    }
+
+
+    @Override
+    protected void onDestroy() {
+        ConnectionHelper.sendCommand("exit");
+        super.onDestroy();
     }
 }

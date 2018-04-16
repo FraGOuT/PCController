@@ -6,7 +6,7 @@ import java.net.Socket;
 public class ConnectionHelper {
 
     public static String SERVER_ADDRESS = "192.168.0.140";
-    public static final int SERVER_PORT = 8282;
+    public static final int SERVER_PORT = 8080;
     public static boolean isConnected;
 
     public static Socket mSocket;
